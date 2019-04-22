@@ -16,7 +16,7 @@
 
 $plugin->version = 2019042203;
 // Moodle version required
-$plugin->requires = 2015111600;
+$plugin->requires = 2018120300;
 $plugin->maturity = MATURITY_STABLE;
 $plugin->release = 2.0;
 $plugin->cron = 0;
