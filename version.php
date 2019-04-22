@@ -14,10 +14,10 @@
  * *************************************************************************
  * *************************************************************************/
 
-$plugin->version = 2019042202;
+$plugin->version = 2019042203;
 // Moodle version required
 $plugin->requires = 2015111600;
-$plugin->maturity = MATURITY_MATURE;
+$plugin->maturity = MATURITY_STABLE;
 $plugin->release = 2.0;
 $plugin->cron = 0;
 $plugin->component = 'local_buildings';
