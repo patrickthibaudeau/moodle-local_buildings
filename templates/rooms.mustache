@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="container-fluid mb-3">
+        <div class="float-right">
+            <a href="{{{wwwroot}}}/local/buildings/" class="btn btn-outline-primary" title="{{#str}}dashboard, local_buildings{{/str}}">{{#str}}dashboard, local_buildings{{/str}}</a> 
+            <a href="room.php?id=0&floorid={{{floorId}}}" class="btn btn-outline-primary" title="{{#str}}add_room, local_buildings{{/str}}">{{#str}}add_room, local_buildings{{/str}}</a> 
+            <a href="floors.php?buildingid={{{buildingId}}}" class="btn btn-outline-primary" title="{{#str}}floors, local_buildings{{/str}}">{{#str}}floors, local_buildings{{/str}}</a> 
+        </div>
+    </div>
+</div>
+<table id="rooms_table" class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                {{#str}}number, local_buildings{{/str}}
+            </th>
+            <th>
+                {{#str}}name, local_buildings{{/str}}
+            </th>
+            <th>
+                {{#str}}number_of_seats, local_buildings{{/str}}
+            </th>
+            <th>
+                {{#str}}windows, local_buildings{{/str}}
+            </th>
+            <th>
+                {{#str}}room_type, local_buildings{{/str}}
+            </th>
+            <th>
+                {{#str}}color, local_buildings{{/str}}
+            </th>
+            <th>
+                {{#str}}actions, local_buildings{{/str}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#rooms}}
+        <tr>
+            <td>
+                {{{number}}}
+            </td>
+            <td>
+                {{{name}}}
+            </td>
+            <td>
+                {{{numberOfSeats}}}
+            </td>
+            <td>
+                {{#windows}}{{#str}}yes, local_buildings{{/str}}{{/windows}}
+                {{^windows}}{{#str}}no, local_buildings{{/str}}{{/windows}}
+            </td>
+            <td>
+                {{{roomType}}}
+            </td>
+            <td>
+                <span style="color: {{{color}}};">{{{color}}}</span>
+            </td>
+            <td>
+                <a href="{{{wwwroot}}}/local/buildings/admin/room.php?id={{{id}}}" class="btn btn-outline-primary edit_building" title="{{#str}}edit, local_buildings{{/str}}">
+                    <i class="fa fa-pencil"></i> {{#str}}edit, local_buildings{{/str}}
+                </a>
+                <a href="javascript:void(0);" class="btn btn-outline-danger delete_room" data-id="{{{id}}}" title="{{#str}}delete, local_buildings{{/str}}">
+                    <i class="fa fa-trash"></i> {{#str}}delete, local_buildings{{/str}}
+                </a>
+            </td>
+        </tr>
+        {{/rooms}}
+    </tbody>    
+</table>
+{{> local_buildings/delete_modal }}
+{{#js}}
+require(['local_buildings/rooms'], function(mod) {
+mod.init();
+});
+{{/js}}

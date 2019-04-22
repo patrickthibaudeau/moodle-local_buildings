@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="container-fluid mb-3">
+        <div class="float-right">
+            <a href="{{{wwwroot}}}/local/buildings/" class="btn btn-outline-primary" title="{{#str}}dashboard, local_buildings{{/str}}">{{#str}}dashboard, local_buildings{{/str}}</a> 
+            <a href="building.php?id=0&campusid={{{campusId}}}" class="btn btn-outline-primary" title="{{#str}}add_building, local_buildings{{/str}}">{{#str}}add_building, local_buildings{{/str}}</a> 
+            <a href="../index.php" class="btn btn-outline-primary" title="{{#str}}campuses, local_buildings{{/str}}">{{#str}}campuses, local_buildings{{/str}}</a> 
+        </div>
+    </div>
+</div>
+<table id="buildings_table" class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                {{#str}}name, local_buildings{{/str}}
+            </th>
+            <th>
+                {{#str}}abbreviation, local_buildings{{/str}}
+            </th>
+            <th>
+                {{#str}}idnumber, local_buildings{{/str}}
+            </th>
+            <th>
+                {{#str}}number_of_floors, local_buildings{{/str}}
+            </th>
+            <th>
+                {{#str}}color, local_buildings{{/str}}
+            </th>
+            <th>
+                {{#str}}actions, local_buildings{{/str}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#buildings}}
+        <tr>
+            <td>
+                {{{name}}}
+            </td>
+            <td>
+                {{{shortName}}}
+            </td>
+            <td>
+                {{{idNumber}}}
+            </td>
+            <td>
+                {{{numberOfFloors}}}
+            </td>
+            <td>
+                {{{color}}}
+            </ttdh>
+            <td>
+                <a href="{{{wwwroot}}}/local/buildings/admin/floors.php?buildingid={{{id}}}" class="btn btn-outline-primary view_building" title="{{#str}}view_floors, local_buildings{{/str}}">
+                    <i class="fa fa-eye"></i> {{#str}}view_floors, local_buildings{{/str}}
+                </a>
+                <a href="{{{wwwroot}}}/local/buildings/admin/building.php?id={{{id}}}" class="btn btn-outline-primary edit_building" title="{{#str}}edit, local_buildings{{/str}}">
+                    <i class="fa fa-pencil"></i> {{#str}}edit, local_buildings{{/str}}
+                </a>
+                <a href="javascript:void(0);" class="btn btn-outline-danger delete_building" data-id="{{{id}}}" title="{{#str}}delete, local_buildings{{/str}}">
+                    <i class="fa fa-trash"></i> {{#str}}delete, local_buildings{{/str}}
+                </a>
+            </td>
+        </tr>
+        {{/buildings}}
+    </tbody>    
+</table>
+{{> local_buildings/delete_modal }}
+{{#js}}
+require(['local_buildings/buildings'], function(mod) {
+mod.init();
+});
+{{/js}}

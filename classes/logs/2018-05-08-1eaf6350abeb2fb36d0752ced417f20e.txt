@@ -1,0 +1,5 @@
+Time : 10:40:37
+SQLSTATE[HY000] [1045] Access denied for user 'wpwebservice'@'patdev.glendon.yorku.ca' (using password: YES)
+
+Time : 10:39:20
+SQLSTATE[HY000] [1045] Access denied for user 'wpwebservice'@'patdev.glendon.yorku.ca' (using password: YES)

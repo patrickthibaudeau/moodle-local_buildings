@@ -1,0 +1,7 @@
+Time : 10:14:51
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'u.first_name = ?' at line 1
+Raw SQL : Select   a.id,   u.first_name As room_name,   a.name As asset_name,   a.asset_tag,   c.name As category,   a.purchase_date,   a.image,   m.name As model_name,   m.model_number,   man.name As manufacturer From   assets a Inner Join   models m     On a.model_id = m.id Inner Join   users u     On a.assigned_to = u.id Inner Join   manufacturers man     On m.manufacturer_id = man.id  Inner Join  categories c    On m.category_id = c.idWhere   u.first_name = ?
+
+Time : 10:13:20
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'u.first_name = ?' at line 1
+Raw SQL : Select   a.id,   u.first_name As room_name,   a.name As asset_name,   a.asset_tag,   c.name As category,   a.purchase_date,   a.image,   m.name As model_name,   m.model_number,   man.name As manufacturer From   assets a Inner Join   models m     On a.model_id = m.id Inner Join   users u     On a.assigned_to = u.id Inner Join   manufacturers man     On m.manufacturer_id = man.id  Inner Join  categories c    On m.category_id = c.idWhere   u.first_name = ?
