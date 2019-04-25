@@ -47,6 +47,9 @@ $string["delete"] = "Delete";
 $string["delete_building"] = "Are you sure you want to delete this building? "
         . "This will delete all floors and room associated to this building."
         . "This cannot be reversed.";
+$string["delete_campus"] = "Are you sure you want to delete this campus? "
+        . "This will delete all buildings, floors and room associated to this campus."
+        . "This cannot be reversed.";
 $string["delete_floor"] = "Are you sure you want to delete this floor? "
         . "This will delete all roomsassociated to this floor."
         . "This cannot be reversed.";
