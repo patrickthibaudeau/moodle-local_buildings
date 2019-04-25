@@ -44,7 +44,7 @@ class Campus implements iCrud {
 
         if ($id != 0) {
             $campus = $DB->get_record('buildings_campus', array('id' => $id));
-            
+
             //Get number of buildings
             $buildings = $DB->get_records('buildings_building', array('campusid' => $id));
 
@@ -174,15 +174,15 @@ class Campus implements iCrud {
     public function delete($all) {
         global $CFG, $DB;
 
-        if ($this->id == 0) {
-            return FALSE;
+        $buildings = $DB->get_records('buildings_building', ['campusid' => $this->id]);
+        foreach ($buildings as $b) {
+            $BUILDING = new \local_buildings\Building($b->id);
+            $BUILDING->delete(true);
         }
-        //Verifiy that the campus is not being used esle where
-        if ($this->hasChild($this->id)) {
-            return FALSE;
+        if ($DB->delete_records('buildings_campus', array('id' => $this->id))) {
+            return true;
         } else {
-            $DB->delete_records('buildings_campus', array('id' => $this->id));
-            return TRUE;
+            return false;
         }
     }
 

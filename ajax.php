@@ -27,5 +27,10 @@ switch ($action) {
         $campusId = required_param('campusId', PARAM_INT);
         echo \local_buildings\Helper::printBuildingsSelectBox($campusId);
         break;
+    case 'deleteCampus':
+        $id = required_param('id', PARAM_INT);
+        $CAMPUS = new \local_buildings\Campus($id);
+        echo $CAMPUS->delete(true);
+        break;
 }
 

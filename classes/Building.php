@@ -51,7 +51,7 @@ class Building implements iCrud {
      */
     public function __construct($id) {
         global $CFG, $DB;
-        
+
         $this->id = $id;
         $this->highestFloor = 0;
         if ($id != 0) {
@@ -90,11 +90,11 @@ class Building implements iCrud {
             $this->highestFloor = $highestFloor->newvalue;
         }
     }
-    
+
     function getCampusShortName() {
         return $this->campusShortName;
     }
- 
+
     public function getIdNumber() {
         return $this->idNumber;
     }
@@ -305,26 +305,17 @@ class Building implements iCrud {
         if ($this->id == 0) {
             return FALSE;
         }
-        //Verifiy that the campus is not being used esle where
-        if ($all == 0) {
-            if ($this->hasChild($this->id)) {
-                return FALSE;
-            } else {
-                $DB->delete_records('buildings_building', array('id' => $this->id));
-                return TRUE;
-            }
-        } else {
-            foreach ($this->floors as $f) {
-                //Delete rooms
-                $DB->delete_records('buildings_room', array('floorid' => $f->id));
-            }
-            //Delete floors
-            $DB->delete_records('buildings_floor', array('buildingid' => $this->id));
-            //Delete building
-            $DB->delete_records('buildings_building', array('id' => $this->id));
-            
-            return true;
+
+        foreach ($this->floors as $f) {
+            //Delete rooms
+            $DB->delete_records('buildings_room', array('floorid' => $f->id));
         }
+        //Delete floors
+        $DB->delete_records('buildings_floor', array('buildingid' => $this->id));
+        //Delete building
+        $DB->delete_records('buildings_building', array('id' => $this->id));
+
+        return true;
     }
 
     /**
