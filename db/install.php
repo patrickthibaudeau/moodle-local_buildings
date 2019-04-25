@@ -46,44 +46,5 @@ function xmldb_local_buildings_install() {
 
         $DB->insert_record('buildings_room_types', $data[$i]);
     }
-    
-    $assets = array(
-            'Blackboard',
-            'Chairs',
-            'Desks',
-            'Table',
-            'Computer PC',
-            'Computer MAC',
-            'Computer LINUX',
-            'Projector',
-            'Television',
-            'Laser pointer',
-            'Whiteboard',
-            'Podium',
-            'Screen',
-            'Interactive monitor',
-            'Interactive board',
-            'Interactive projector',
-            'DVD Player',
-            'VCR Player',
-            'Microphone',
-            'Sound system',
-            'Blu-ray player',
-            'Neck Mic (Camtashia-Integrated)',
-            'Neck Mic',
-            'Document camera',
-        );
-        
-        sort($assets);
-
-        $data = array();
-
-        for ($i = 0; $i < count($assets); $i++) {
-            $data[$i]['name'] = $assets[$i];
-            if (!$DB->get_record('buildings_assets_config', array('name' => $assets[$i]))) {
-                $DB->insert_record('buildings_assets_config', $data[$i]);
-            }
-        }
-    
     return true;
 }
