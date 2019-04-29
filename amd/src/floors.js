@@ -7,7 +7,9 @@ define(['jquery', 'jqueryui', 'local_buildings/datatable', , 'local_buildings/sp
      * @returns {undefined}
      */
     function initFloors() {
-        $("#floors_table").DataTable();
+        $("#floors_table").DataTable({
+            "lengthMenu": [[-1, 10, 25, 50], ["All", 10, 25, 50]]
+        });
         initDeleteModal();
 
     }
